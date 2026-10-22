@@ -1,0 +1,48 @@
+name: Build Windows Exe
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install --save-dev electron electron-builder
+
+      - name: Build React Vite app
+        run: npm run build
+
+      - name: Build Windows Executable (.exe)
+        run: npx electron-builder --win --x64 --publish never
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Windows Installer Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: HN-Voice-Studio-Windows-Installer
+          path: |
+            dist-electron/*.exe
+            dist-electron/*.zip

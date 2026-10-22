@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HN Voice Studio - AI Dịch Video & Lồng Tiếng Offline</title>
+    <meta name="description" content="Phần mềm AI dịch video Trung Quốc sang tiếng Việt và lồng tiếng offline với SenseVoice, Qwen3-4B và VieNeu-TTS v3 Turbo." />
+    <meta property="og:title" content="HN Voice Studio - AI Dịch Video & Lồng Tiếng Offline" />
+    <meta property="og:description" content="Phần mềm AI dịch video Trung Quốc sang tiếng Việt và lồng tiếng offline với SenseVoice, Qwen3-4B và VieNeu-TTS v3 Turbo." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      (function() {
+        try {
+          var _fetch = window.fetch ? window.fetch.bind(window) : null;
+          Object.defineProperty(window, 'fetch', {
+            get: function() { return _fetch; },
+            set: function(v) { _fetch = v; },
+            configurable: true,
+            enumerable: true
+          });
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', {
+                get: function() { return _fetch; },
+                set: function(v) { _fetch = v; },
+                configurable: true,
+                enumerable: true
+              });
+            } catch (e2) {}
+          }
+        } catch (e) {
+          console.warn('Fetch interceptor init:', e);
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[#121214] text-gray-100 overflow-hidden select-none">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

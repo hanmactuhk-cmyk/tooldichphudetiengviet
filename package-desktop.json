@@ -1,0 +1,35 @@
+{
+  "name": "hn-voice-studio-desktop",
+  "version": "3.0.0",
+  "description": "HN Voice Studio - Desktop Offline App with SenseVoice, Qwen3-4B, and VieNeu-TTS v3 Turbo",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win --x64"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "axios": "^1.7.9"
+  },
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.hnvoicestudio.desktop",
+    "productName": "HN Voice Studio",
+    "win": {
+      "target": ["nsis", "portable"],
+      "icon": "resources/icon.ico"
+    },
+    "files": [
+      "dist/**/*",
+      "electron-main.js",
+      "server.ts",
+      "resources/**/*"
+    ],
+    "extraResources": [
+      "resources/**/*"
+    ]
+  }
+}

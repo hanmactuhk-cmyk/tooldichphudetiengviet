@@ -26,15 +26,10 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: |
-          npm install
-          npm install --save-dev electron electron-builder
-
-      - name: Build React Vite app
-        run: npm run build
+        run: npm install --legacy-peer-deps
 
       - name: Build Windows Executable (.exe)
-        run: npx electron-builder --win --x64 --publish never
+        run: npm run electron:build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -43,5 +38,6 @@ jobs:
         with:
           name: HN-Voice-Studio-Windows-Installer
           path: |
+            dist/*.exe
             dist-electron/*.exe
-            dist-electron/*.zip
+            release/*.exe

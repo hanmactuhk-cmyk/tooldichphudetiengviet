@@ -26,7 +26,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install --include=optional --legacy-peer-deps
 
       - name: Build Windows Executable (.exe)
         run: npm run electron:build
